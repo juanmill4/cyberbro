@@ -6,6 +6,7 @@ from engines.chrome_extension import ChromeExtensionEngine
 from engines.criminalip import CriminalIPEngine
 from engines.crowdstrike import CrowdstrikeEngine
 from engines.crtsh import CrtShEngine
+from engines.darkeye import DarkEyeEngine
 from engines.dfir_iris import DFIRIrisEngine
 from engines.github import GitHubEngine
 from engines.google import GoogleCSEEngine
@@ -59,6 +60,7 @@ def get_engine_instances(
         CrowdstrikeEngine(secrets, proxies, ssl_verify),
         MsTenantCheckEngine(secrets, proxies, ssl_verify),
         CrtShEngine(secrets, proxies, ssl_verify),
+        DarkEyeEngine(secrets, proxies, ssl_verify),
         DFIRIrisEngine(secrets, proxies, ssl_verify),
         GitHubEngine(secrets, proxies, ssl_verify),
         GoogleCSEEngine(secrets, proxies, ssl_verify),

@@ -1,0 +1,50 @@
+<div class="card">
+    <h3>DarkEye</h3>
+
+    {% set darkeye = analysis_results.results[0].darkeye %}
+    {% if darkeye %}
+        {% if darkeye.products %}
+            <p><strong>Queried:</strong> {{ darkeye.products | join(', ') }}</p>
+        {% endif %}
+
+        {% for error in darkeye.errors %}
+            <p><strong>Warning:</strong> {{ error.product }} could not be queried: {{ error.error }}</p>
+        {% endfor %}
+
+        {% if darkeye.found %}
+            <p><strong>Records found:</strong> {{ darkeye.count }}</p>
+            {% if darkeye.truncated %}
+                <p>The list is incomplete: a page or result limit was reached.</p>
+            {% endif %}
+
+            {% for record in darkeye.records[:50] %}
+            <div style="margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color);">
+                {% if record.title %}
+                    <p><strong>Title:</strong> {{ record.title }}</p>
+                {% endif %}
+                <p><strong>Category:</strong> {{ record.category }} ({{ record.product }})</p>
+                {% if record.group %}
+                    <p><strong>Group:</strong> {{ record.group }}</p>
+                {% endif %}
+                {% if record.website %}
+                    <p><strong>Website:</strong> {{ record.website }}</p>
+                {% endif %}
+                {% if record.country %}
+                    <p><strong>Country:</strong> {{ record.country }}</p>
+                {% endif %}
+                {% if record.discovered %}
+                    <p><strong>Discovered:</strong> {{ record.discovered }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+            {% if darkeye.records | length > 50 %}
+                <p>Showing 50 of {{ darkeye.records | length }} records. Export the results to see all of them.</p>
+            {% endif %}
+        {% else %}
+            <p>Not Found</p>
+        {% endif %}
+
+    {% else %}
+        <p>Not applicable</p>
+    {% endif %}
+</div>

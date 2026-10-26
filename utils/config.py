@@ -24,6 +24,8 @@ class Secrets:
     crowdstrike_client_id: str = ""
     crowdstrike_client_secret: str = ""
     crowdstrike_falcon_base_url: str = "https://falcon.crowdstrike.com"
+    darkeye_breach_house_api_key: str = ""
+    darkeye_hibr_api_key: str = ""
     dfir_iris_url: str = ""
     dfir_iris_api_key: str = ""
     dfir_iris_search_notes: bool = False

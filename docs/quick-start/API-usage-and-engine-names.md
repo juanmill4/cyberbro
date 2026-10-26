@@ -307,6 +307,11 @@ Once the analysis is complete, retrieve the results using the `analysis_id`.
 **Supports**: domain, URL, free_no_key  
 **Explaination**: Checks crt.sh for known subdomain names based on TLS certificates for a given domain / URL, free, no API key
 
+### DarkEye
+**Name**: `darkeye`  
+**Supports**: domain, URL, paid API key(s) required  
+**Explanation**: Ransomware victims, data breaches, leads and stealer logs for a domain (Have I Been Ransomed? and Breach House). Each product has its own optional key (`DARKEYE_HIBR_API_KEY`, `DARKEYE_BREACH_HOUSE_API_KEY`); the engine queries every product that has a key, and a failing product does not hide the records of the other one (it is reported in `errors`). Only listing metadata is returned (product, category, id, title, website, group, country, discovery date). See [Get DarkEye API Keys](../api-keys/Get-DarkEye-API-keys.md).
+
 ### DFIR-IRIS  
 **Name**: `dfir_iris`  
 **Supports** : domain,URL,IP,hash, free API key required  

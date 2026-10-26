@@ -115,6 +115,8 @@ CRIMINALIP_API_KEY=token_here
 CROWDSTRIKE_CLIENT_ID=client_id_here
 CROWDSTRIKE_CLIENT_SECRET=client_secret_here
 DFIR_IRIS_API_KEY=token_here
+DARKEYE_HIBR_API_KEY=token_here
+DARKEYE_BREACH_HOUSE_API_KEY=token_here
 DFIR_IRIS_URL=https://dfir-iris.local
 DFIR_IRIS_SEARCH_NOTES=false
 GOOGLE_CSE_CX=cx_here
@@ -303,6 +305,7 @@ curl "http://localhost:5000/api/results/e88de647-b153-4904-91e5-8f5c79174854"
 * [CriminalIP](https://www.criminalip.io/)
 * [CrowdStrike](https://www.crowdstrike.com/)
 * [crt.sh](https://crt.sh/)
+* [DarkEye](https://darkeye.io/) (Have I Been Ransomed? and Breach House)
 * [DFIR Iris](https://www.dfir-iris.org/)
 * [Github](https://github.com/)
 * [Google Safe Browsing](https://developers.google.com/safe-browsing)

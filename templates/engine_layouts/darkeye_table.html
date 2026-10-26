@@ -1,0 +1,30 @@
+<td>
+    {% set darkeye = result.darkeye %}
+    {% if darkeye and darkeye.found %}
+        <strong>{{ darkeye.count }} record(s)</strong>
+        {% set categories = darkeye.records | map(attribute='category') | select | unique | list %}
+        {% if categories %}
+            <div style="color: var(--text-secondary); font-size: 0.85em;">
+                Categories: {{ categories | join(', ') }}
+            </div>
+        {% endif %}
+        {% set groups = darkeye.records | map(attribute='group') | select | unique | list %}
+        {% if groups %}
+            <div style="color: var(--text-secondary); font-size: 0.85em;">
+                Groups: {{ groups[:10] | join(', ') }}{% if groups | length > 10 %}, ...{% endif %}
+            </div>
+        {% endif %}
+        {% if darkeye.truncated %}
+            <div style="color: var(--text-secondary); font-size: 0.85em;">Incomplete list</div>
+        {% endif %}
+    {% elif darkeye and darkeye.found == false %}
+        Not Found
+    {% else %}
+        Not applicable
+    {% endif %}
+    {% if darkeye %}
+        {% for error in darkeye.errors %}
+            <div style="color: var(--text-secondary); font-size: 0.85em;">{{ error.product }}: {{ error.error }}</div>
+        {% endfor %}
+    {% endif %}
+</td>

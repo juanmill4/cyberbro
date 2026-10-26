@@ -185,6 +185,26 @@ function formatResults(data) {
             }
             if (result.ransomware_live.search_url) plainText += `  Search: ${result.ransomware_live.search_url}\n`;
         }
+        if (result.darkeye) {
+            plainText += `DarkEye: Found: ${result.darkeye.found}, Count: ${result.darkeye.count}\n`;
+            if (result.darkeye.products && result.darkeye.products.length > 0) {
+                plainText += `  Products: ${result.darkeye.products.join(', ')}\n`;
+            }
+            if (result.darkeye.truncated) plainText += `  Incomplete list (page or result limit reached)\n`;
+            if (result.darkeye.errors && result.darkeye.errors.length > 0) {
+                result.darkeye.errors.forEach(darkeyeError => {
+                    plainText += `  Error: ${darkeyeError.product}: ${darkeyeError.error}\n`;
+                });
+            }
+            if (result.darkeye.records && result.darkeye.records.length > 0) {
+                result.darkeye.records.forEach(record => {
+                    plainText += `  - [${record.category}] ${record.title || record.website}`;
+                    if (record.group) plainText += ` (${record.group})`;
+                    if (record.discovered) plainText += ` [${record.discovered}]`;
+                    plainText += `\n`;
+                });
+            }
+        }
         if (result.google && result.google.results.length > 0) {
             plainText += `Google:\n`;
             result.google.results.forEach(googleResult => {

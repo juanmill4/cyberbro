@@ -581,6 +581,19 @@
                 });
             }
 
+            if (entry.darkeye?.found && entry.darkeye?.records) {
+                const ransomwareGroups = new Set(
+                    entry.darkeye.records
+                        .filter((record) => record.category === "ransomware")
+                        .map((record) => record.group || "Unknown Group")
+                );
+                ransomwareGroups.forEach((groupName) => {
+                    const groupNodeId = `darkeye_ransomware_group_${groupName}`;
+                    addNode(groupNodeId, groupName, "darkeye", "https://img.icons8.com/officexs/32/skull.png");
+                    edges.push({ from: obs, to: groupNodeId, label: "Ransomware victim (DarkEye)" });
+                });
+            }
+
             if (entry.bad_asn) {
                 const badAsnData = entry.bad_asn;
 
